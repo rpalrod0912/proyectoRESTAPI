@@ -28,7 +28,12 @@ public class ProductService {
     }
 
     public Product getProductById(String productId){
+        System.out.println(productId);
         return repository.findById(productId).get();
+    }
+
+    public  List<Product> getProductByMarca(String marca){
+        return repository.findByMarca(marca);
     }
 
     public List<Product> getProductByPrecio(int precio){
@@ -57,6 +62,7 @@ public class ProductService {
     }
 
     public String deleteProduct(String productId){
+        System.out.println(productId);
         repository.deleteById(productId);
         return productId+" producto eliminado de API ";
     }

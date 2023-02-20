@@ -20,7 +20,7 @@ public class ProductController {
         return service.addProduct(product);
     }
 
-
+    @GetMapping
     public List<Product> getProducts(){
         return service.findAllProducts();
     }
@@ -39,13 +39,17 @@ public class ProductController {
         return service.getProductByNombre(nombre);
     }
 
+    @GetMapping("marca/{marca}")
+    public List<Product> findProducstUsingMarca(@PathVariable String marca){
+        return service.getProductByMarca(marca);
+    }
     @PutMapping
     public Product modifyProduct(@RequestBody Product product){
         return service.updateProduct(product);
     }
 
     @DeleteMapping("/{productId}")
-    public String deleteProduct(String productId){
+    public String deleteProduct(@PathVariable String productId){
         return service.deleteProduct(productId);
     }
 
